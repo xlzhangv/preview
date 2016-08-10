@@ -1,0 +1,30 @@
+*{ padding: 0px; margin:0px; list-style: none;}
+body{ background:url(../images/login_bg.jpg) no-repeat center center;}
+/*登陆*/
+#login-form{ width:1000px; height: 324px; position:fixed; top: 50%; left: 50%; margin-left:-500px; margin-top: -160px;}
+#login-form .left,#login-form .left img{ width:510px; height:293px; display: block;}
+#login-form .left{float:left;}
+#login-form .form-con{width:445px; float: right; height:324px;}
+#login-form .form-con li{ margin-bottom:10px;}
+#login-form .mini-error .mini-textbox-border{margin-right:0px!important;}
+#login-form .mini-errorIcon{display: none!important}
+#login-form .mini-textbox,.verify{border:solid 1px #666; border-width: 1px!important; background-color: #2B2E31}
+.verify{padding:0 0 0 20px;}
+#login-form .mini-error{border:solid 1px #ff6767;}
+#login-form .mini-required .mini-textbox-border, #login-form .mini-required .mini-buttonedit-border{ background: none!important; border:none!important;}
+.form-con li .mini-textbox,.form-con li .mini-password{width: 412px;height: 40px; line-height: 40px; padding:0 0 0 30px; }
+.form-con li .mini-textbox-input,.form-con li .mini-textbox-border{height: 40px; line-height: 40px; font-size: 18px;}
+.form-con li .mini-textbox{ background:url(../images/usernameico.png)  no-repeat 5px center;}
+.form-con li .mini-password{ background:url(../images/passwordico.png) no-repeat 5px center;}
+input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus { box-shadow:0 0 0 60px #2B2E31 inset; }
+.loginbtn{background:#f49c11;height:40px; width:445px; line-height:40px; text-align:center;color: #fff;  border:none; cursor: pointer; font-size: 22px; font-family: "Microsoft YaHei"}
+#login-info{ height:20px; line-height: 20px; font-size: 12px; color: #666; float: right;}
+#login-info img{ float: left; display: block; margin:5px 10px 0 15px;}
+.check .mini-checkbox{ color: #666}
+.success-icon{
+	float: left;
+    width: 19px;
+    margin-top: 7px;
+    margin-left: 10px;
+    height: 19px;
+	background-image: url("../images/tinfor_approve.png");background-repeat: no-repeat;}

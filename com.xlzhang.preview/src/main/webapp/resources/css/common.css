@@ -1,0 +1,67 @@
+*{ padding:0px; margin:0px; list-style: none; text-decoration: none;}
+a{color: #0066cc}
+.floatR{float: right}
+.floatL{ float:left}
+img{ border:none}
+.clearb{ clear:both; font-size: 0px; height: 0px; overflow: hidden; display: block}
+/*婊氬姩鏉℃牱寮�*/
+html,body {
+	scrollbar-face-color:#b5bdc6;
+	scrollbar-highlight-color:#fff;
+	scrollbar-shadow-color:#eeeeee;
+	scrollbar-3dlight-color:#eeeeee;
+	scrollbar-arrow-color:#000;
+	scrollbar-track-color:#fff;
+	scrollbar-darkshadow-color:#fff;
+}
+::-webkit-scrollbar-thumb {	background-color: #a9a9a9;/*滚动条颜色*/height: 50px;	outline-offset: -2px;	outline: 2px solid #353b45;-webkit-border-radius: 4px;	border: 2px solid #a9a9a9;/*滚动条边框颜色*/}
+::-webkit-scrollbar-thumb:hover {	background-color: #929090;height: 50px;	-webkit-border-radius: 4px;}
+::-webkit-scrollbar {	width: 8px;	height: 8px;}
+::-webkit-scrollbar-track-piece {	background-color:#f1f1f1;	-webkit-border-radius: 0;}
+input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus { box-shadow:0 0 0 60px #FFFFFF inset; }
+
+
+/*操作模块*/
+.operation-box{border:none; padding:0px 10px 10px 10px; overflow: hidden}
+.operation-box .mini-label{ font-size: 14px;}
+.lave-search{ float: left}
+.lave-search li{ float: left; margin-right:10px; display: inline-block; font-size:14px;}
+
+.senior-search{background: #fff;overflow: hidden}
+.additional-search-label{ float:left; margin-left:10px; margin-top:10px;}
+.additional-search-label label{width:110px; text-align: right; float: left; height:30px; line-height: 30px; display:block}
+/*表单*/
+.form-group{ overflow: hidden; width:100%}
+.form-group li{ line-height: 36px; clear:both;margin-bottom: 10px; color: #4b4b4b; font-size: 14px;}
+.form-group li .mini-labelfield-label,.form-group li .mini-label{float: left;width: 200px; text-align: right; height: 36px; display: inline-block; line-height: 36px;}
+.form-col-double li .mini-label{width: 150px;}
+.form-group li .mini-textbox,.form-group li .mini-labelfield,.form-group li .mini-buttonedit{width:60%}
+.mini-checkboxlist,.mini-radiobuttonlist{ height:36px!important;}
+.pop-group{padding:15px 0px;}
+.pop-group li .mini-textbox,.pop-group li .mini-labelfield{width:80%}
+
+
+/*两列表单*/
+.form-col-double li{width:48%; float:left; clear: none;}
+.form-col-double li .mini-label{ text-align: right}
+/*弹出框*/
+.mini-panel-toolbar{padding-bottom:10px;}
+.mini-panel-toolbar a{ margin:0 6px;}
+.mini-required-span{color: red;  padding: 2px;}
+
+/**/
+.mini-radiobuttonlist-item{ padding: 12px 0px;}
+.mini-checkboxlist-item{padding:10px 0px;}
+.mini-space{height: 10px; clear: both;}
+.mini-bar{border-bottom: #ffbc1c 1px solid; height: 30px;line-height: 30px; margin-bottom: 10px; padding: 10px;font-weight: bold;}
+
+
+/*修改密码*/
+.update-pswd{ width:700px; margin:12% auto}
+.update-pswd .form-submit{padding-left:200px;}
+.show_formsumbit{padding-top:10px;}
+
+/*新添加样式*/
+.mini-textbox-input{  line-height: 20px;}
+.mini-div p{ font-size: 14px!important; font-family: "Microsoft YaHei", "微软雅黑", "SimSun", "宋体"!important; line-height: 25px!important; text-indent:2em!important;}
+#goback-button{margin-top:4px!important;}

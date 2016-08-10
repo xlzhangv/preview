@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <!-- develop mode -->
+    <constant name="struts.serve.static.browserCache" value="false"/>
+    <constant name="struts.devMode" value="true"/>
+    <constant name="struts.ognl.allowStaticMethodAccess" value="true"/>
+    <constant name="struts.configuration.xml.reload" value="true"/>
+    <constant name="log4j.logger.org.apache.struts2.convention" value="DEBUG"/>
+     <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.convention.exclude.parentClassLoader" value="true"/>
+    <constant name="struts.convention.default.parent.package" value="struts-default"/>
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
+    <constant name="struts.action.extension" value="html"/>
+    <constant name="struts.convention.package.locators" value="web,action"/>
+    <constant name="struts.convention.result.path" value="/WEB-INF/jsp/"/>
+    <constant name="struts.objectFactory" value="spring"/>
+
+    <package name="struts-default-authority" extends="struts-default">
+        <global-results>
+            <result name="404">/404.jsp</result>
+            <result name="500">/500.jsp</result>
+            <result name="notFound">/index.jsp</result>
+            <result name="login" type="redirect">/login.html</result>
+        </global-results>
+    </package>
+</struts>

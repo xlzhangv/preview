@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+   http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+   http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
+	default-autowire="byType">
+
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">false</prop>
+                <prop key="hibernate.jdbc.fetch_size">200</prop>
+				<prop key="hibernate.jdbc.batch_size">200</prop>
+
+            </props>
+        </property>
+
+        <property name="packagesToScan">
+            <list>
+            	<value>com.xlzhang.preview.pojo</value>
+                <value>com.xlzhang.preview.*.pojo</value>
+                <value>com.xlzhang.preview.*.*.pojo</value>
+            </list>
+        </property>
+    </bean>
+
+	<!-- 事务管理器配置, Hibernate单数据源事务 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- 1.使用annotation定义事务 -->
+	<!-- proxy-target-class ture:动态代理(需cglib类库的支持) false:接口(Spring默认方式) -->
+	<tx:annotation-driven transaction-manager="transactionManager"
+		proxy-target-class="true" />
+
+	<!-- proxy-target-class true:CGLIB代理 false:JDK代理 -->
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+
+	<!-- 2.声明式事务配置 -->
+	<aop:config>
+		<aop:pointcut id="serviceMethods"
+			expression="execution(* com.xlzhang.preview.service.*.*(..))
+        || execution(* com.xlzhang.preview.service.impl.*.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethods" />
+	</aop:config>
+	
+	<!-- 通知 默认事务管理器：transaction-manager="transactionManager" -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="save*" propagation="REQUIRED"
+				rollback-for="com.xlzhang.preview.base.RollbackException" />
+			<tx:method name="update*" propagation="REQUIRED"
+				rollback-for="com.xlzhang.preview.base.RollbackException" />
+			<tx:method name="delete*" propagation="REQUIRED"
+				rollback-for="com.xlzhang.preview.base.RollbackException" />
+			<tx:method name="*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+
+</beans>
