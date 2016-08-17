@@ -17,6 +17,7 @@
           	   	 text-align: center;
           	   }
           	   .vertical{
+          	   		 width: 80%;
           	   		 margin:10px auto;
           	   		 display: block;
           	   }

@@ -4,14 +4,12 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
 
+import javax.imageio.ImageIO;
+
 import org.apache.log4j.Logger;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.rendering.ImageType;
 import org.apache.pdfbox.rendering.PDFRenderer;
-
-import com.sun.image.codec.jpeg.JPEGCodec;
-import com.sun.image.codec.jpeg.JPEGEncodeParam;
-import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
 public class PDFchangToImage {
     private static final Logger LOGGER = Logger.getLogger(PDFchangToImage.class);
@@ -35,22 +33,24 @@ public class PDFchangToImage {
 
             for (int i = 0; i < document.getNumberOfPages(); i++) {
                 
-                BufferedImage image = new PDFRenderer(document).renderImageWithDPI(i, 130, ImageType.RGB);
+                BufferedImage image = new PDFRenderer(document).renderImageWithDPI(i, 512, ImageType.RGB);
 
-                String destFile = baseImgDir + "\\" + i + ".jpg";
+                String destFile = baseImgDir + "\\" + i + ".png";
 
                 // 目标路径不存在则建立目标路径
                 File dest = new File(destFile);
                 if (!dest.getParentFile().exists())
                     dest.getParentFile().mkdirs();
                 FileOutputStream out = new FileOutputStream(destFile); // 输出到文件流
-                JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
-                JPEGEncodeParam param2 = encoder.getDefaultJPEGEncodeParam(image);
-                param2.setQuality(1f, false);// 1f是提高生成的图片质量
-                encoder.setJPEGEncodeParam(param2);
-                encoder.encode(image); // JPEG编码
+                ImageIO.write(image, "png", out);
+//                
+//                JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
+//                JPEGEncodeParam param2 = encoder.getDefaultJPEGEncodeParam(image);
+//                param2.setQuality(1f, false);// 1f是提高生成的图片质量
+//                encoder.setJPEGEncodeParam(param2);
+//                encoder.encode(image); // JPEG编码
                 out.close();
-                event.after(i, relativePath + "\\" + i + ".jpg");
+                event.after(i, relativePath + "\\" + i + ".png");
             }
             document.close();
             LOGGER.info("完成:pdf 2 image finish,cost:" + (System.currentTimeMillis() - startTime) + "ms");
